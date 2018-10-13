@@ -1,31 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Form from '../components/Form';
 import { addTodo } from '../actions';
 
-class FormContainer extends React.Component {
-  constructor(props, context) {
-      super(props, context);
-
-      this.store = this.context.store;
-
-      this.handleAdd = this.handleAdd.bind(this);
-  }
-
-  handleAdd(title) {
-    this.store.dispatch(addTodo(title));
-  }
-
-  render() {
-    return (
-      <Form onAdd={this.handleAdd}/>
-    )
+function mapDispatchToProps(dispatch) {
+  return {
+    onAdd: title => dispatch(addTodo(title))
   }
 }
 
-FormContainer.contextTypes = {
-  store: PropTypes.object
-}
+const FormContainer = connect(null, mapDispatchToProps)(Form);
 
 export default FormContainer;
