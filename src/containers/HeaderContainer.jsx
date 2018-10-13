@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../components/Header';
 
 class HeaderContainer extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
-    this.store = this.props.store;
+    this.store = this.context.store;
   }
 
   componentDidMount() {
-    this.unsubscribe = this.props.store.subscribe(() => this.forceUpdate());
+    this.unsubscribe = this.store.subscribe(() => this.forceUpdate());
   }
 
   componentWillUnmount() {
@@ -24,6 +25,10 @@ class HeaderContainer extends React.Component {
       <Header todos={todos} />
     )
   }
+}
+
+HeaderContainer.contextTypes = {
+  store: PropTypes.object
 }
 
 export default HeaderContainer;

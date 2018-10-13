@@ -5,12 +5,12 @@ import HeaderContainer from './containers/HeaderContainer';
 import ListContainer from './containers/ListContainer';
 import FormContainer from './containers/FormContainer';
 
-function App({ store }) {
+function App() {
   return (
       <main>
-          <HeaderContainer store={store}/>
-          <ListContainer store={store}/>
-          <FormContainer store={store}/>
+          <HeaderContainer/>
+          <ListContainer/>
+          <FormContainer/>
       </main>
   );
 }
