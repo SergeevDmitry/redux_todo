@@ -4,18 +4,30 @@ import PropTypes from 'prop-types';
 import Stats from './Stats';
 import Stopwatch from './Stopwatch';
 
-function Header(props) {
+class Header extends React.Component {
+  componentDidMount() {
+    this.unsubscribe = this.props.store.subscribe(() => this.forceUpdate());
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  render() {
+    const todos = this.props.store.getState();
+
     return (
         <header>
-            <Stats todos={props.todos} />
+            <Stats todos={todos} />
             <h1>Redux Todo</h1>
             <Stopwatch />
         </header>
     );
+  }
 }
 
 Header.propTypes = {
-    todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired
 };
 
 export default Header;

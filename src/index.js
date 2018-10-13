@@ -8,4 +8,4 @@ import App from './App';
 
 const store = createStore(reducer, todos);
 
-ReactDOM.render(<App initialData={todos} />, document.getElementById('root'));
+ReactDOM.render(<App store={store} />, document.getElementById('root'));
