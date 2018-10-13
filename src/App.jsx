@@ -14,7 +14,7 @@ class App extends React.Component {
         };
 
         this._nextId = this.state.todos.length;
-        
+
         this.handleAdd = this.handleAdd.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
@@ -43,7 +43,7 @@ class App extends React.Component {
             ...this.state.todos.slice(0, index),
             ...this.state.todos.slice(index + 1)
         ];
-        
+
         this.setState({ todos });
     }
 
